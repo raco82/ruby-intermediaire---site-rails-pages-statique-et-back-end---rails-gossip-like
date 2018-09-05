@@ -1,0 +1,25 @@
+<div class="center jumbotron">
+  <h1>EDITER LE GOSSIP</h1>
+
+  <div class="container">
+
+    <%= form_for @gossip, url: {action: "update"} do |g| %>
+    <h4 class="text-danger" id="error"><%= flash[:error] %></h4>
+    <div class="form-group">
+      <label>Votre Pseudo :</label><br>
+      <%= g.text_field :anonymous_author, class: "text-muted" %><br>
+    </div>
+    <div class="form-group">
+      <label>Votre Gossip :
+      </label><br>
+      <%= g.text_area :content, size: "50x3", class: "text-muted" %><br>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Modifier le gossip</button>
+      <a href="<%= gossip_path(@gossip.id) %>" class="btn btn-outline-danger" data-method="DELETE" data-confirm="Supprimer le gossip ?">Supprimer le gossip</a>
+    </div>
+
+  <% end %>
+
+</div>
+</div>

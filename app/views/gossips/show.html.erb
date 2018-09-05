@@ -1,0 +1,51 @@
+<div class="center jumbotron">
+  <h1>VOTRE GOSSIP</h1>
+  <div class="page container">
+
+    <div class="row">
+      <p class="bg-primary text-white post-content">
+        <%= @gossip.content %>
+      </p>
+    </div>
+
+    <div class="row">
+      <% @gossip.comments.each do |comment| %>
+        <div class="col-lg-3">
+          <p class="small_text">
+            Commentaire
+            <%= comment.id %>
+          </p>
+          <p>
+            <strong>rédigé par</strong>
+            :
+            <%= comment.anonymous_commentor %>
+          </p>
+
+          <p>
+            <strong>Commentaire</strong>
+            :
+            <%= comment.body %>
+          </p>
+          <a href="/gossips/<%= @gossip.id %>/comments/<%= comment.id %>/edit" type="button" class="btn btn-primary">Editer</a>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="row">
+      <p>Ajouter un commentaire</p>
+      <%= form_with(model: [ @gossip, @gossip.comments.build ], local: true) do |form| %>
+      <p>
+        <%= form.label :pseudo %><br>
+        <%= form.text_field :anonymous_commentor %>
+      </p>
+      <p>
+        <%= form.label :votre_commentaire %><br>
+        <%= form.text_area :body %>
+      </p>
+      <p>
+        <%= form.submit %>
+      </p>
+    <% end %>
+  </div>
+</div>
+</div>

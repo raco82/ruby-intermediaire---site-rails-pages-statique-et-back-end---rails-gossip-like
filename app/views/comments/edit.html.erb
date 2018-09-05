@@ -1,0 +1,24 @@
+<div class="center jumbotron">
+  <h1>EDITER LE COMMENTAIRE</h1>
+  <div class="container">
+
+    <%= form_for @comment, url: {action: "update"} do |com| %>
+    <h4 class="text-danger" id="error"><%= flash[:error] %></h4>
+    <div class="form-group">
+      <label>Editer le Pseudo :</label><br>
+      <%= com.text_field :anonymous_commentor, class: "text-muted" %><br>
+    </div>
+    <div class="form-group">
+      <label>Modifier le commentaire</label><br>
+      <%= com.text_area :body, size: "50x3", class: "text-muted" %><br>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Valider</button>
+      <%= link_to 'Supprimer !', [@comment.gossip, @comment], class:'btn btn-danger', method: :delete, data: { confirm: 'Confirmer suppression?' } %>
+      <a href="<%= gossips_path %>" class="btn btn-success">Retour à la liste des gossips</a>
+    </div>
+
+  <% end %>
+
+</div>
+</div>
